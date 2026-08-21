@@ -2,6 +2,7 @@ const http = require("http");
 
 const server = http.createServer((req, res) => {
 
+    // Student URL
     if (req.method === "GET" && req.url === "/student") {
 
         const student = {
@@ -17,10 +18,11 @@ const server = http.createServer((req, res) => {
         res.end(JSON.stringify(student));
     }
 
+    // Employee URL
     else if (req.method === "GET" && req.url === "/employee") {
 
         const employee = {
-            name: "Radha",
+            name: "Sujeet",
             id: 102,
             salary: 30000
         };
@@ -32,7 +34,9 @@ const server = http.createServer((req, res) => {
         res.end(JSON.stringify(employee));
     }
 
+    // 404 Error
     else {
+
         res.writeHead(404, {
             "Content-Type": "application/json"
         });
