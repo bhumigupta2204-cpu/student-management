@@ -1,52 +1,28 @@
-const http = require("http");
+const http=require('http')
+const fs=require('fs')
+const server=http.createServer((req,res)=>{
+    
+fs.readFile("Student.json","utf-8",(err,data)=>{
+    if(err)
+    {
+        res.writeHead(500,{
+            "content-type":"text/plain"
+        })
 
-const server = http.createServer((req, res) => {
-
-    // Student URL
-    if (req.method === "GET" && req.url === "/student") {
-
-        const student = {
-            name: "Bhumi",
-            rollNo: 101,
-            marks: 85
-        };
-
-        res.writeHead(200, {
-            "Content-Type": "application/json"
-        });
-
-        res.end(JSON.stringify(student));
+        res.end("Error occurrred")
+        return
     }
+    res.writeHead(200,{
+        "content-type":"text/application.json"
+    })
+    res.end(data)
+})
 
-    // Employee URL
-    else if (req.method === "GET" && req.url === "/employee") {
-
-        const employee = {
-            name: "Sujeet",
-            id: 102,
-            salary: 30000
-        };
-
-        res.writeHead(200, {
-            "Content-Type": "application/json"
-        });
-
-        res.end(JSON.stringify(employee));
+})
+server.listen(3000,(err)=>{
+    if(err)
+    {
+        console.log(err)
     }
-
-    // 404 Error
-    else {
-
-        res.writeHead(404, {
-            "Content-Type": "application/json"
-        });
-
-        res.end(JSON.stringify({
-            error: "404 - URL Not Found"
-        }));
-    }
-});
-
-server.listen(4000, () => {
-    console.log("Server running on port 4000");
-});
+    console.log("server running in port 3000")
+})
