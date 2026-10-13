@@ -1,0 +1,31 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local XSS Classroom Lab</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Local XSS Classroom Lab - Bhumi Gupta</h1>
+    <p>Enter a message below. This page is for local learning only.</p>
+
+    <label for="userInput">Your message</label>
+    <input id="userInput" type="text" placeholder="Type a message">
+
+    <div class="buttons">
+      <button id="unsafeButton">Run unsafe demo</button>
+      <button id="safeButton">Run safe version</button>
+      <button id="clearButton" class="secondary">Clear</button>
+      <button id="lengthButton">Show length</button>
+    </div>
+
+    <h2>Output</h2>
+    <div id="output" class="output">Your output will appear here.</div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
